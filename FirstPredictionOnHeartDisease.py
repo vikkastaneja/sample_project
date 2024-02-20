@@ -6,6 +6,8 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 import os
+# import sklearn
+# sklearn.show_versions()
 
 # Read the records from heart-disease.csv file and create a data frame from it
 heart_disease = pd.read_csv(os.path.dirname(os.path.abspath(__file__)) + "/data/heart-disease.csv")
@@ -57,14 +59,17 @@ for i in range(10, 100, 10):
         max_score = score
         max_estimator = i
         max_model = clf
-    print(f"Model accuracy on test set: {score * 100:.2f}%")
-    print("")
+    # print(f"Model accuracy on test set: {score * 100:.2f}%")
+    # print("")
 
-print(f'max score: {max_score * 100:.2f}, max estimator: {max_estimator}%')
+max_score = round(max_score * 100, 2)
+print(f'max score: {max_score}, max estimator: {max_estimator}%')
 
 # 6. Save a model and load it
 import pickle
 
 pickle.dump(max_model, open("max_model.pkl", "wb"))
 loaded_model = pickle.load(open("max_model.pkl", "rb"))
-print(f"Saved model score: {loaded_model.score(X_test, y_test)* 100:.2f}")
+loaded_model_score = round(loaded_model.score(X_test, y_test)* 100, 2)
+print(f"Saved model score: {loaded_model_score}")
+assert loaded_model_score == max_score,'Max Score from previous is a mismatch from the loaded model'
