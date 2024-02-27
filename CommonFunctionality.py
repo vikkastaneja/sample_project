@@ -65,4 +65,6 @@ def run_all_car_sales(absolute_path_file_name):
     print(f'Score is: {score}')
 
     # Although Scikit-Learn latest revision automatically handles the NaNs in the data, there are multiple ways to handle manually
-    # Option 1. 
+    # Option 1. Use Panda to fill up the NaNs
+    # Option 2. Use scikit-learn
+    
