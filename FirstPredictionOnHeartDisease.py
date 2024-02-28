@@ -73,9 +73,3 @@ loaded_model = pickle.load(open("max_model.pkl", "rb"))
 loaded_model_score = round(loaded_model.score(X_test, y_test)* 100, 2)
 print(f"Saved model score: {loaded_model_score}")
 assert loaded_model_score == max_score,'Max Score from previous is a mismatch from the loaded model'
-
-# X_trial = [63,1,3,145,300,1,0,150,0,2.3,0,0,1]
-
-X_trial = np.array([63,1,3,145,233,1,0,150,0,2.3,0,0,1])
-
-print(max_model.predict(X_trial))
